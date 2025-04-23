@@ -1,0 +1,30 @@
+parameters:
+    database:
+        dsn: 'pgsql:host=db;dbname=nette'
+        user: 'nette'
+        password: 'secret'
+
+application:
+	errorPresenter:
+		4xx: Error:Error4xx
+		5xx: Error:Error5xx
+	mapping: App\Presentation\*\**Presenter
+
+
+database:
+	dsn: %database.dsn%
+	user: %database.user%
+	password: %database.password%
+
+
+latte:
+	strictTypes: yes
+	strictParsing: yes
+	extensions:
+		- App\Presentation\Accessory\LatteExtension
+
+
+di:
+	export:
+		parameters: no
+		tags: no
